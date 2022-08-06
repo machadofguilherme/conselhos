@@ -25,7 +25,9 @@ const obterConselho = async () => {
   const url = 'https://api.adviceslip.com/advice';
   const conselho = await fetch(url)
     .then((resposta) => resposta.json())
-    .then((conteudo) => conteudo.slip);
+    .then((conteudo) => conteudo.slip)
+    .catch(() => geraFrase(`Houve um erro de conexão. 
+    Tente novamente mais tarde.`))
   const { advice: mensagem } = conselho;
   obterTraducao(mensagem);
 }
