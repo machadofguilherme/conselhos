@@ -18,8 +18,11 @@ const obterTraducao = async (mensagem) => {
     }),
     headers: { 'Content-Type': 'application/json' }
   });
+  console.log('tradutor: ', tradutor);
   
   const { translatedText } = await tradutor.json();
+  console.log('translatedText: ', translatedText);
+
   return geraFrase(translatedText);
 }
 
@@ -27,9 +30,7 @@ const obterConselho = async () => {
   const url = 'https://api.adviceslip.com/advice';
   const conselho = await fetch(url);
   const { slip } = await conselho.json();
-  console.log('slip: ', slip);
   const { advice } = slip;
-  console.log('advice: ', advice);
   return obterTraducao(advice);
 }
 
