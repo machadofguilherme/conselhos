@@ -30,4 +30,4 @@ const obterConselho = async () => {
   return obterTraducao(response);
 }
 
-async window.onload = await obterConselho;
+window.onload = async () => await obterConselho();
