@@ -8,6 +8,7 @@ const geraFrase = (frase) => {
 
 const obterTraducao = async (mensagem) => {
   const url = 'https://translate.argosopentech.com/translate';
+  
   const tradutor = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -16,9 +17,10 @@ const obterTraducao = async (mensagem) => {
       target: 'pt',
     }),
     headers: { 'Content-Type': 'application/json' }
-  }).then((traducao) => traducao.json());
-  const fraseTraduzida = tradutor.translatedText;
-  return geraFrase(fraseTraduzida);
+  });
+  
+  const { translatedText } = await tradutor.json();
+  return geraFrase(translatedText);
 }
 
 const obterConselho = async () => {
