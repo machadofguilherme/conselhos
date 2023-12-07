@@ -24,10 +24,9 @@ const obterTraducao = async (mensagem) => {
 const obterConselho = async () => {
   const url = 'https://api.adviceslip.com/advice';
   const conselho = await fetch(url);
-  const response = await conselho.json();
-  console.log(response);
-  // const { advice: mensagem } = conselho;
-  return obterTraducao(response);
+  const { slip } = await conselho.json();
+  const { advice } = slip;
+  return obterTraducao(advice);
 }
 
 window.onload = async () => await obterConselho();
