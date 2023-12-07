@@ -25,7 +25,9 @@ const obterConselho = async () => {
   const url = 'https://api.adviceslip.com/advice';
   const conselho = await fetch(url);
   const { slip } = await conselho.json();
+  console.log('slip: ', slip);
   const { advice } = slip;
+  console.log('advice: ', advice);
   return obterTraducao(advice);
 }
 
