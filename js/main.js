@@ -32,4 +32,4 @@ const obterConselho = async () => {
   obterTraducao(mensagem);
 }
 
-window.onload = obterConselho;
+async window.onload = await obterConselho;
